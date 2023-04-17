@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class StudentController {
 
@@ -37,5 +39,9 @@ public class StudentController {
         studentService.saveOrUpdate(student);
         return student.getId();
     }
-
+@PutMapping("/student/{id}")
+    private int updateStudent(@RequestBody Student student){
+        studentService.update(student);
+        return student.getId();
+}
 }

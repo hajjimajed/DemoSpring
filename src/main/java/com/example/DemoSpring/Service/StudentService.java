@@ -40,4 +40,6 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
+    public void update(Student student){studentRepository.save(student);}
+
 }
