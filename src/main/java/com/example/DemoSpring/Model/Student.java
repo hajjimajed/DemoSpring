@@ -1,7 +1,8 @@
 package com.example.DemoSpring.Model;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -15,6 +16,15 @@ public class Student {
     private int age;
     @Column
     private String email;
+
+
+
+    @OneToMany(mappedBy = "student",
+    cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Book> books=new ArrayList<>();
+
 
 
     public int getId() {
@@ -47,5 +57,14 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }
